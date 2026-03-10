@@ -6,7 +6,7 @@ duplicate_set = set()
 with open(FILE_PATH, 'r') as f:
     email = f.readline()
     while(email):
-        email.strip()
+        email = email.strip()
         if email in seen_set:
             if email not in duplicate_set:
                 duplicate_set.add(email)
