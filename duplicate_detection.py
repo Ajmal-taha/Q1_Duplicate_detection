@@ -1,18 +1,26 @@
-FILE_PATH = "document.txt"
+from dotenv import load_dotenv
+import os
 
-seen_set = set()
-duplicate_set = set()
+load_dotenv()
+file_path = os.getenv("FILE_PATH")
 
-with open(FILE_PATH, 'r') as f:
-    email = f.readline()
-    while(email):
-        email = email.strip()
-        if email in seen_set:
-            if email not in duplicate_set:
-                duplicate_set.add(email)
-        else:
-            seen_set.add(email)
+def duplicate_detect(file_path):
+    seen_set = set()
+    duplicate_set = set()
 
+    with open(file_path, 'r') as f:
         email = f.readline()
+        while(email):
+            email = email.strip()
+            if email in seen_set:
+                if email not in duplicate_set:
+                    duplicate_set.add(email)
+            else:
+                seen_set.add(email)
 
-print(duplicate_set)
+            email = f.readline()
+    return duplicate_set
+
+if __name__ == "__main__":
+    duplicate_set = duplicate_detect(file_path)
+    print(duplicate_set)
