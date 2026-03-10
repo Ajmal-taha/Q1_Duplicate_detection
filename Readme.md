@@ -7,3 +7,6 @@ first load the file
 then read each email one by one and update the seen set
     - if an email has appeared before then add it to the duplicate set
     - else add that email to seen set
+
+assumptions:
+each email is stored in text file seperated by new line
